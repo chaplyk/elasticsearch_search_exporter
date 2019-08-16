@@ -30,10 +30,13 @@ if __name__ == '__main__':
     while True:
         start = time.time()
         for search in searches:
+            interval=searches[search]['interval']
             try:
                 get_metrics(search)
             except Exception as e:
                 print ("Cannot retrieve data from ElasticSearch:")
                 print (e)
-                print ("Retrying in 60 seconds...")
-        time.sleep(60-(time.time()-start)) # wait till 1 minute passes
+                print ("Retrying in " + str(interval) + " seconds...")
+            except KeyboardInterrupt:
+                raise
+        time.sleep(interval-(time.time()-start))
