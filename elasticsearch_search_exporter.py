@@ -6,7 +6,9 @@ from prometheus_client import Gauge, start_http_server
 
 try:
     searches_json=open("searches.json", "r").read()
-    searches=json.loads(searches_json)['searches']
+    config=json.loads(searches_json)
+    searches=config['searches']
+    interval=config['interval']
 except ValueError:
     print ("Not valid JSON in searches.json")
     raise
@@ -30,7 +32,6 @@ if __name__ == '__main__':
     while True:
         start = time.time()
         for search in searches:
-            interval=searches[search]['interval']
             try:
                 get_metrics(search)
             except Exception as e:

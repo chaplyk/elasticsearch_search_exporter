@@ -4,8 +4,8 @@
             "query": {
                 "match_all": {}
             },
-            "description": "This is a description for test_search",
-            "interval": 60
+            "description": "This is a description for test_search"
         }
-    }
+    },
+    "interval": 60
 }
