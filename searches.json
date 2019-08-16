@@ -1,0 +1,10 @@
+{
+    "searches": {
+        "test_search": {
+            "query": {
+                "match_all": {}
+            },
+            "description": "This is a description for test_search"
+        }
+    }
+}
