@@ -20,7 +20,7 @@ except Exception:
 
 def get_metrics(search):
         data = json.dumps({"query": searches[search]['query'], "size": 0})
-        r = requests.post('http://localhost:9200/_search', data=data).json()
+        r = requests.post('http://localhost:9200/_search', data=data, headers = {'Content-type': 'application/json'}).json()
         count = r['hits']['total']
         if not search in g.keys():
             g[search] = Gauge(search, searches[search]['description'])
